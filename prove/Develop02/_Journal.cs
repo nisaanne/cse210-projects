@@ -37,18 +37,21 @@ public void DisplayJournal()
 }
 public void SaveJournal(string filename)
 {
-    using (StreamWriter writer = new StreamWriter(filename))
+    string path = Path.Combine(Directory.GetCurrentDirectory(), filename);
+    using (StreamWriter writer = new StreamWriter(path))
     {
         foreach (var entry in _entries)
         {
             writer.WriteLine($"{entry._date}|{entry._prompt}|{entry._response}");
         }
     }
+    Console.WriteLine($"Journal saved to: {path}");
 }
 public void LoadJournal(string filename)
 {
+    string path = Path.Combine(Directory.GetCurrentDirectory(), filename);
     _entries.Clear();
-    using (StreamReader reader = new StreamReader(filename))
+    using (StreamReader reader = new StreamReader(path))
     {
         string line;
         while ((line = reader.ReadLine()) != null)
@@ -62,6 +65,7 @@ public void LoadJournal(string filename)
 
         }
     }
+    Console.WriteLine($"Journal loaded from: {path}");
 }
 }
 public class _Entry
