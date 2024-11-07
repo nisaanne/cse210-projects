@@ -30,13 +30,22 @@ public void WriteNewEntry()
 
 public void DisplayJournal()
 {
-    foreach (var entry in _entries)
+    if (_entries.Count == 0)
     {
-        entry.Display();
+        Console.WriteLine("No journal entries to display.");
+    }
+    else
+    {
+        foreach (var entry in _entries)
+        {
+            entry.Display();
+        }
     }
 }
+
 public void SaveJournal(string filename)
 {
+    
     string path = Path.Combine(Directory.GetCurrentDirectory(), filename);
     using (StreamWriter writer = new StreamWriter(path))
     {
@@ -62,6 +71,7 @@ public void LoadJournal(string filename)
             entry._response = parts[2];
             entry._date = parts[0];
             _entries.Add(entry);
+            _entries.Add(entry); Console.WriteLine($"Loaded Entry: {entry._date} - {entry._prompt}: {entry._response}");
 
         }
     }
