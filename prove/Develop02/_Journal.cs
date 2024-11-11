@@ -20,12 +20,15 @@ public class _Journal
         string prompt = _prompts[random.Next(_prompts.Count)];
         Console.WriteLine(prompt);
         string response = Console.ReadLine();
+        Console.WriteLine("What is your current goal?"); 
+        string currentGoal = Console.ReadLine();
 
         _Entry entry = new _Entry
         {
             _prompt = prompt,
             _response = response,
-            _date = DateTime.Now.ToString("yyyy-MM-dd")
+            _date = DateTime.Now.ToString("yyyy-MM-dd"),
+            _currentGoal = currentGoal
         };
 
         _entries.Add(entry);
@@ -53,7 +56,7 @@ public class _Journal
         {
             foreach (var entry in _entries)
             {
-                writer.WriteLine($"{entry._date}|{entry._prompt}|{entry._response}");
+                writer.WriteLine($"{entry._date}|{entry._prompt}|{entry._response}|{entry._currentGoal}");
             }
         }
         Console.WriteLine($"Journal saved to: {path}");
@@ -73,10 +76,12 @@ public class _Journal
                 {
                     _prompt = parts[1],
                     _response = parts[2],
-                    _date = parts[0]
+                    _date = parts[0],
+                    _currentGoal = parts[3]
                 };
                 _entries.Add(entry);
                 Console.WriteLine($"Loaded Entry: {entry._date} - {entry._prompt}: {entry._response}");
+                Console.WriteLine($"Current Goal: {entry._currentGoal}");
             }
         }
         Console.WriteLine($"Journal loaded from: {path}");
