@@ -1,6 +1,6 @@
 using System;
 
-public class Entry
+public class _Entry
 {
   public string _prompt;
   public string _response;

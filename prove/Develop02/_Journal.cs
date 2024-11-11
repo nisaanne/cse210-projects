@@ -83,14 +83,4 @@ public class _Journal
     }
 }
 
-public class _Entry
-{
-    public string _prompt;
-    public string _response;
-    public string _date;
 
-    public void Display()
-    {
-        Console.WriteLine($"{_date} - {_prompt}: {_response}");
-    }
-}
