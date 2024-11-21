@@ -6,7 +6,7 @@ public class Video
     public string Title { get; set; }
     public string Author { get; set; }
     public int Length { get; set; }
-    private List<Comment> _comments { get; set; }
+    private List<Comment> _comments;
 
     public Video(string title, string author, int length)
     {
