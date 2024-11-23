@@ -1,27 +1,28 @@
 public class Address
 {
-    private string streetAddress;
-    private string city;
-    private string stateProvince;
-    private string country;
+    private string _streetAddress;
+    private string _city;
+    private string _stateProvince;
+    private string _country;
 
-
-
+  
     public Address(string street, string city, string state, string country)
     {
-        this.streetAddress = street;
-        this.city = city;
-        this.stateProvince = state;
-        this.country = country;
+        _streetAddress = street;
+        _city = city;
+        _stateProvince = state;
+        _country = country;
     }
 
+   
     public bool IsInUSA()
     {
-        return this.country.ToLower() == "usa";
+        return _country.ToLower() == "usa";
     }
 
+    
     public override string ToString()
     {
-        return $"{this.streetAddress}\n{this.city}, {this.stateProvince}\n{this.country}";
+        return $"{_streetAddress}\n{_city}, {_stateProvince}\n{_country}";
     }
 }

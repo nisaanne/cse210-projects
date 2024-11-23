@@ -3,38 +3,38 @@ using System.Collections.Generic;
 
 public class Order
 {
-    private List<(Product product, int quantity)> products = new List<(Product product, int quantity)>();
-    private Customer customer;
+    private List<(Product product, int quantity)> _products = new List<(Product product, int quantity)>();
+    private Customer _customer;
 
-  
+    
     public Order(Customer customer)
     { 
-        this.customer = customer;
+        _customer = customer;
     }
 
-
+    
     public void AddProduct(Product product, int quantity)
     {
-        this.products.Add((product, quantity));
+        _products.Add((product, quantity));
     }
 
-   
+  
     public double GetTotalCost()
     {
         double totalCost = 0;
-        foreach (var item in this.products)
+        foreach (var item in _products)
         {
             totalCost += item.product.GetPrice() * item.quantity;
         }
-        double shippingCost = this.customer.IsInUSA() ? 5.0 : 35.0;
+        double shippingCost = _customer.IsInUSA() ? 5.0 : 35.0;
         return totalCost + shippingCost;
     }
 
-   
+    
     public string GetPackingLabel()
     {
         string label = "Packing Label:\n";
-        foreach (var item in this.products)
+        foreach (var item in _products)
         {
             label += $"{item.product.ToString()} - Quantity: {item.quantity}\n";
         }
@@ -42,9 +42,11 @@ public class Order
         return label;
     }
 
+    
     public string GetShippingLabel()
     {
-        return $"Shipping Label:\n{this.customer.ToString()}";
+        return $"Shipping Label:\n{_customer.ToString()}";
     }
 }
+
 
