@@ -16,7 +16,8 @@ public class Program
         Product product1 = new Product("Skylight", "S001", 10.0);
         Product product2 = new Product("Puzzle", "P001", 15.0);
         Product product3 = new Product("Binoculars", "B001", 20.0);
-
+        
+        
         Order order1 = new Order(customer1);
         order1.AddProduct(product1, 2); 
         order1.AddProduct(product2, 1); 
