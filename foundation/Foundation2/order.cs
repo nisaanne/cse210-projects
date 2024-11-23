@@ -6,7 +6,7 @@ public class Order
     private List<(Product product, int quantity)> products = new List<(Product product, int quantity)>();
     private Customer customer;
 
-  
+   
     public Order(Customer customer)
     { 
         this.customer = customer;
@@ -38,6 +38,7 @@ public class Order
         {
             label += $"{item.product.ToString()} - Quantity: {item.quantity}\n";
         }
+        label += $"Total Cost: ${GetTotalCost():0.00}\n";
         return label;
     }
 
