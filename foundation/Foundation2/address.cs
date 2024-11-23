@@ -5,7 +5,7 @@ public class Address
     private string stateProvince;
     private string country;
 
-}
+
 
     public Address(string stree, string city, string state, string country)
     {
@@ -24,3 +24,4 @@ public class Address
     {
         return $"{this.streetAddress}\n{this.city}, {this.stateProvince}\n{this.country}";
     }
+}
