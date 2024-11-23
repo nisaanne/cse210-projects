@@ -1,14 +1,14 @@
 public class Product
 {
     private string name;
-    private string productID;
-    private double prive;
+    private string productId;
+    private double price;
     private int quantity;
 
 
     public Product(string name, string productID, double price, int quantity)
     {
-        this.name = name
+        this.name = name;
         this.productId = productId;
         this.price = price;
         this.quantity = quantity;

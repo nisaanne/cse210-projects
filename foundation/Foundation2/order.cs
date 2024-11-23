@@ -19,12 +19,12 @@ public class Order
     public double GetTotalCost()
     {
         double totalCost = 0;
-        foreach (Product product inthis.products)
+        foreach (Product product in this.products)
         {
             totalCost += product.GetTotalCost();
         }
         double shippingCost = this.customer.IsInUSA() ? 5.0 : 35.0;
-        return total Cost + shippingCost;
+        return totalCost + shippingCost;
     }
 
     public string GetPackingLabel()

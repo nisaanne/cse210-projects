@@ -7,17 +7,17 @@ public class Address
 
 
 
-    public Address(string stree, string city, string state, string country)
+    public Address(string street, string city, string state, string country)
     {
         this.streetAddress = street;
         this.city = city;
         this.stateProvince = state;
-        this.country = country
+        this.country = country;
     }
 
     public bool IsInUSA()
     {
-        return this.countryToLower() == "usa";
+        return this.country.ToLower() == "usa";
     }
 
     public override string ToString()

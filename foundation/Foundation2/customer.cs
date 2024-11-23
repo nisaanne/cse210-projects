@@ -10,7 +10,7 @@ public class Customer
 
     public bool IsInUSA()
     {
-        return this. address.IsInUSA();
+        return this.address.IsInUSA();
     }
 
     public override string ToString()
