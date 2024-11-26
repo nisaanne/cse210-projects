@@ -10,14 +10,19 @@ public class BreathingActivity : MindfulnessActivity
         int duration = GetDuration();
         for (int i = 0; i < duration; i += 10)
         {
+            Console.WriteLine("Prepare to Breathe in...");
+            Countdown(5);
             Console.WriteLine("Breathe in...");
-            OldAnimationPause(5);
+            SlowBreathingAnimation(5);
+
+            Console.WriteLine("Prepare to Breathe out...");
+            Countdown(5);
             Console.WriteLine("Breathe out...");
-            OldAnimationPause(5);
+            SlowBreathingAnimation(5);
         }
     }
 
-    private void OldAnimationPause(int seconds)
+    private void SlowBreathingAnimation(int seconds)
     {
         DateTime startTime = DateTime.Now;
         DateTime futureTime = startTime.AddSeconds(seconds);
@@ -25,29 +30,22 @@ public class BreathingActivity : MindfulnessActivity
         while (DateTime.Now < futureTime)
         {
             Console.Write("+");
-            Thread.Sleep(500);
-            Console.Write("\b \b"); // Erase the + character
+            Thread.Sleep(1000); 
+            Console.Write("\b \b"); 
             Console.Write("-");
-            Thread.Sleep(500);
-            Console.Write("\b \b"); // Erase the - character
+            Thread.Sleep(1000); 
+            Console.Write("\b \b"); 
         }
         Console.WriteLine();
     }
 
-    private void SpinningPause(int seconds)
+    private void Countdown(int seconds)
     {
-        char[] spinner = new char[] { '|', '/', '-', '\\' };
-        DateTime endTime = DateTime.Now.AddSeconds(seconds);
-        int counter = 0;
-
-        while (DateTime.Now < endTime)
+        for (int i = seconds; i > 0; i--)
         {
-            Console.Write(spinner[counter % 4]);
-            Thread.Sleep(250);
-            Console.Write("\b");
-            counter++;
+            Console.WriteLine(i);
+            Thread.Sleep(1000); 
         }
-        Console.WriteLine();
     }
 }
 
