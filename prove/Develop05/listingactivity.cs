@@ -19,7 +19,7 @@ public class ListingActivity : MindfulnessActivity
         int duration = GetDuration();
         Random random = new Random();
         Console.WriteLine(_prompts[random.Next(_prompts.Length)]);
-        PauseWithAnimation(5);
+        SpinningPause(5);
 
         int itemCount = 0;
         int elapsed = 0;
@@ -30,7 +30,7 @@ public class ListingActivity : MindfulnessActivity
             Console.ReadLine();
             itemCount++;
             elapsed += 5;
-            PauseWithAnimation(5);
+            SpinningPause(5);
         }
 
         Console.WriteLine($"You listed {itemCount} items.");

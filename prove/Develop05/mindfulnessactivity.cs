@@ -20,29 +20,29 @@ public abstract class MindfulnessActivity
         Console.Write("Enter the duration in seconds: ");
         _duration = int.Parse(Console.ReadLine());
         Console.WriteLine("Prepare to begin...");
-        PauseWithAnimation(3);
+        SpinningPause(3);
 
         PerformActivity();
 
         Console.WriteLine("Good job!");
         Console.WriteLine($"You have completed the {_name} activity for {_duration} seconds.");
-        PauseWithAnimation(3);
+        SpinningPause(3);
     }
 
     protected abstract void PerformActivity();
 
-    protected void PauseWithAnimation(int seconds)
+    protected void SpinningPause(int seconds)
     {
-        DateTime startTime = DateTime.Now;
-        DateTime futureTime = startTime.AddSeconds(seconds);
+        char[] spinner = new char[] { '|', '/', '-', '\\' };
+        DateTime endTime = DateTime.Now.AddSeconds(seconds);
+        int counter = 0;
 
-        while (DateTime.Now < futureTime)
+        while (DateTime.Now < endTime)
         {
-            Console.Write("+");
-            Thread.Sleep(500);
-            Console.Write("\b \b"); // Erase the + character
-            Console.Write("-");
-            Thread.Sleep(500);
+            Console.Write(spinner[counter % 4]);
+            Thread.Sleep(250);
+            Console.Write("\b");
+            counter++;
         }
         Console.WriteLine();
     }

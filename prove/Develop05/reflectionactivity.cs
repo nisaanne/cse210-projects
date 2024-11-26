@@ -31,14 +31,15 @@ public class ReflectionActivity : MindfulnessActivity
         int duration = GetDuration();
         Random random = new Random();
         Console.WriteLine(_prompts[random.Next(_prompts.Length)]);
-        PauseWithAnimation(5);
+        SpinningPause(5);
         int elapsed = 0;
 
         while (elapsed < duration)
         {
             Console.WriteLine(_questions[random.Next(_questions.Length)]);
-            PauseWithAnimation(5);
+            SpinningPause(5);
             elapsed += 5;
         }
     }
 }
+

@@ -11,10 +11,44 @@ public class BreathingActivity : MindfulnessActivity
         for (int i = 0; i < duration; i += 10)
         {
             Console.WriteLine("Breathe in...");
-            PauseWithAnimation(5);
+            OldAnimationPause(5);
             Console.WriteLine("Breathe out...");
-            PauseWithAnimation(5);
+            OldAnimationPause(5);
         }
     }
+
+    private void OldAnimationPause(int seconds)
+    {
+        DateTime startTime = DateTime.Now;
+        DateTime futureTime = startTime.AddSeconds(seconds);
+
+        while (DateTime.Now < futureTime)
+        {
+            Console.Write("+");
+            Thread.Sleep(500);
+            Console.Write("\b \b"); // Erase the + character
+            Console.Write("-");
+            Thread.Sleep(500);
+            Console.Write("\b \b"); // Erase the - character
+        }
+        Console.WriteLine();
+    }
+
+    private void SpinningPause(int seconds)
+    {
+        char[] spinner = new char[] { '|', '/', '-', '\\' };
+        DateTime endTime = DateTime.Now.AddSeconds(seconds);
+        int counter = 0;
+
+        while (DateTime.Now < endTime)
+        {
+            Console.Write(spinner[counter % 4]);
+            Thread.Sleep(250);
+            Console.Write("\b");
+            counter++;
+        }
+        Console.WriteLine();
+    }
 }
+
 
