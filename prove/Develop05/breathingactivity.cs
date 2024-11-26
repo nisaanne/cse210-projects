@@ -19,7 +19,7 @@ public class BreathingActivity : MindfulnessActivity
     {
         for (int i = seconds; i > 0; i--)
         {
-            Console.Clear(); // Clear the console for a cleaner animation
+            Console.Clear(); 
             Console.WriteLine($"Breathe in...{new string('.', i)} {i}");
             Thread.Sleep(1000);
         }
@@ -32,7 +32,7 @@ public class BreathingActivity : MindfulnessActivity
     {
         for (int i = seconds; i > 0; i--)
         {
-            Console.Clear(); // Clear the console for a cleaner animation
+            Console.Clear(); 
             Console.WriteLine($"Breathe out...{new string('.', 6 - i)} {i}");
             Thread.Sleep(1000);
         }
