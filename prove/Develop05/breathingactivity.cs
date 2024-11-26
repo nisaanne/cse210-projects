@@ -10,21 +10,34 @@ public class BreathingActivity : MindfulnessActivity
         int duration = GetDuration();
         for (int i = 0; i < duration; i += 10)
         {
-            Console.Write("Breathe in...");
-            Countdown(5);
-            Console.Write("Breathe out...");
-            Countdown(5);
+            BreatheIn(4);
+            BreatheOut(6);
         }
     }
 
-    private void Countdown(int seconds)
+    private void BreatheIn(int seconds)
     {
         for (int i = seconds; i > 0; i--)
         {
-            Console.Write($" {i}");
-            Thread.Sleep(1000); // One second pause between countdown numbers
-            Console.Write("\b\b"); // Erase the previous number
+            Console.Clear(); // Clear the console for a cleaner animation
+            Console.WriteLine($"Breathe in...{new string('.', i)} {i}");
+            Thread.Sleep(1000);
         }
-        Console.WriteLine(" 0");
+        Console.Clear();
+        Console.WriteLine("Breathe in...0");
+        Thread.Sleep(1000);
+    }
+
+    private void BreatheOut(int seconds)
+    {
+        for (int i = seconds; i > 0; i--)
+        {
+            Console.Clear(); // Clear the console for a cleaner animation
+            Console.WriteLine($"Breathe out...{new string('.', 6 - i)} {i}");
+            Thread.Sleep(1000);
+        }
+        Console.Clear();
+        Console.WriteLine("Breathe out...0");
+        Thread.Sleep(1000);
     }
 }
