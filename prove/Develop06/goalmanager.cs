@@ -102,7 +102,7 @@ public class GoalManager
         string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, filename);
         using (StreamReader file = new StreamReader(path))
         {
-            goals.Clear(); // Clear any existing goals before loading new ones
+            goals.Clear();
             string line;
             while ((line = file.ReadLine()) != null)
             {
@@ -130,7 +130,7 @@ public class GoalManager
                     }
                     else if (goalType == "ChecklistGoal")
                     {
-                        line = file.ReadLine(); // Read the next line for checklist goal details
+                        line = file.ReadLine(); 
                         var checklistParts = line.Split(',');
                         int target = int.Parse(checklistParts[0]);
                         int bonus = int.Parse(checklistParts[1]);

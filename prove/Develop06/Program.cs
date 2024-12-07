@@ -17,42 +17,41 @@ public class Program
             Console.WriteLine("7. Quit");
             string choice = Console.ReadLine();
             
-            switch (choice)
+            if (choice == "1")
             {
-                case "1":
-                    CreateGoal(tracker);
-                    break;
-                
-                case "2":
-                    tracker.ListGoalDetails();
-                    break;
-                
-                case "3":
-                    Console.Write("Enter filename to save progress (e.g., goals.txt): ");
-                    string saveFile = Console.ReadLine();
-                    tracker.SaveGoals(saveFile);
-                    break;
-                
-                case "4":
-                    Console.Write("Enter filename to load progress (e.g., goals.txt): ");
-                    string loadFile = Console.ReadLine();
-                    tracker.LoadGoals(loadFile);
-                    break;
-                
-                case "5":
-                    RecordGoalEvent(tracker);
-                    break;
-
-                case "6":
-                    tracker.DisplayPlayerInfo();
-                    break;
-                
-                case "7":
-                    return;
-                
-                default:
-                    Console.WriteLine("Invalid option. Please try again.");
-                    break;
+                CreateGoal(tracker);
+            }
+            else if (choice == "2")
+            {
+                tracker.ListGoalDetails();
+            }
+            else if (choice == "3")
+            {
+                Console.Write("Enter filename to save progress (e.g., goals.txt): ");
+                string saveFile = Console.ReadLine();
+                tracker.SaveGoals(saveFile);
+            }
+            else if (choice == "4")
+            {
+                Console.Write("Enter filename to load progress (e.g., goals.txt): ");
+                string loadFile = Console.ReadLine();
+                tracker.LoadGoals(loadFile);
+            }
+            else if (choice == "5")
+            {
+                RecordGoalEvent(tracker);
+            }
+            else if (choice == "6")
+            {
+                tracker.DisplayPlayerInfo();
+            }
+            else if (choice == "7")
+            {
+                return;
+            }
+            else
+            {
+                Console.WriteLine("Invalid option. Please try again.");
             }
         }
     }
@@ -84,20 +83,21 @@ public class Program
         Console.WriteLine("3. Checklist Goal");
         string goalTypeChoice = Console.ReadLine();
 
-        switch (goalTypeChoice)
+        if (goalTypeChoice == "1")
         {
-            case "1":
-                CreateSimpleGoal(tracker);
-                break;
-            case "2":
-                CreateEternalGoal(tracker);
-                break;
-            case "3":
-                CreateChecklistGoal(tracker);
-                break;
-            default:
-                Console.WriteLine("Invalid option. Returning to main menu.");
-                break;
+            CreateSimpleGoal(tracker);
+        }
+        else if (goalTypeChoice == "2")
+        {
+            CreateEternalGoal(tracker);
+        }
+        else if (goalTypeChoice == "3")
+        {
+            CreateChecklistGoal(tracker);
+        }
+        else
+        {
+            Console.WriteLine("Invalid option. Returning to main menu.");
         }
     }
 
@@ -141,5 +141,4 @@ public class Program
         tracker.CreateGoal("checklist", shortName, description, points, target, bonus);
     }
 }
-
 
