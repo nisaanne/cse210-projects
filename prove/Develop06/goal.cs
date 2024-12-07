@@ -1,27 +1,53 @@
 public abstract class Goal
 {
-    public string ShortName { get; set; }
-    public string Description { get; set; }
-    public int Points { get; set; }
-    public bool Completed { get; set; }
+    private string _shortName;
+    private string _description;
+    private int _points;
+    private bool _completed;
 
-    public Goal(string shortName, string description, int points)
+    protected Goal(string shortName, string description, int points)
     {
-        ShortName = shortName;
-        Description = description;
-        Points = points;
-        Completed = false;
+        _shortName = shortName;
+        _description = description;
+        _points = points;
+        _completed = false;
+    }
+
+    public string ShortName
+    {
+        get => _shortName;
+    }
+
+    public string Description
+    {
+        get => _description;
+    }
+
+    public int Points
+    {
+        get => _points;
+    }
+
+    public bool Completed
+    {
+        get => _completed;
+        protected set => _completed = value;
     }
 
     public abstract int RecordEvent();
 
-    public string GetCheckbox()
+    public void SetCompleted(bool completed)
     {
-        return Completed ? "[X]" : "[ ]";
+        _completed = completed;
     }
 
-    public virtual string GetGoalDetails()
+    public string GetCheckbox()
     {
-        return $"{GetCheckbox()} {ShortName}: {Description}";
+        return _completed ? "[X]" : "[ ]";
+    }
+
+    public override string ToString()
+    {
+        return $"{GetCheckbox()} {_shortName}: {_description} - Points: {_points}";
     }
 }

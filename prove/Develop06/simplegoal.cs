@@ -9,8 +9,8 @@ public class SimpleGoal : Goal
         return Points;
     }
 
-    public override string GetGoalDetails()
+    public override string ToString()
     {
-        return base.GetGoalDetails();
+        return $"{GetCheckbox()} {ShortName} - Points: {Points}";
     }
 }

@@ -38,7 +38,7 @@ public class GoalManager
         int count = 1;
         foreach (var goal in goals)
         {
-            Console.WriteLine($"{count}. {goal.GetGoalDetails()}");
+            Console.WriteLine($"{count}. {goal}");
             count++;
         }
         Console.WriteLine();
@@ -48,19 +48,21 @@ public class GoalManager
     public void CreateGoal(string goalType, string shortName, string description, int points, int target = 0, int bonus = 0)
     {
         Goal goal;
-        switch (goalType.ToLower())
+        if (goalType.ToLower() == "simple")
         {
-            case "simple":
-                goal = new SimpleGoal(shortName, description, points);
-                break;
-            case "eternal":
-                goal = new EternalGoal(shortName, description, points);
-                break;
-            case "checklist":
-                goal = new ChecklistGoal(shortName, description, points, target, bonus);
-                break;
-            default:
-                throw new ArgumentException("Invalid goal type.");
+            goal = new SimpleGoal(shortName, description, points);
+        }
+        else if (goalType.ToLower() == "eternal")
+        {
+            goal = new EternalGoal(shortName, description, points);
+        }
+        else if (goalType.ToLower() == "checklist")
+        {
+            goal = new ChecklistGoal(shortName, description, points, target, bonus);
+        }
+        else
+        {
+            throw new ArgumentException("Invalid goal type.");
         }
         goals.Add(goal);
     }
@@ -102,7 +104,7 @@ public class GoalManager
         string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, filename);
         using (StreamReader file = new StreamReader(path))
         {
-            goals.Clear();
+            goals.Clear(); 
             string line;
             while ((line = file.ReadLine()) != null)
             {
@@ -142,11 +144,10 @@ public class GoalManager
                     {
                         continue;
                     }
-                    goal.Completed = completed;
+                    goal.SetCompleted(completed);
                     goals.Add(goal);
                 }
             }
         }
     }
 }
-

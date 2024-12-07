@@ -8,9 +8,9 @@ public class EternalGoal : Goal
         return Points;
     }
 
-    public override string GetGoalDetails()
+    public override string ToString()
     {
-        return base.GetGoalDetails();
+        return $"{GetCheckbox()} {ShortName} - Points for each completion: {Points}";
     }
 }
 
