@@ -5,7 +5,7 @@ public abstract class Activity
     private DateTime _date;
     private int _length; 
 
-    public Activity(DateTime date, int length)
+    protected Activity(DateTime date, int length)
     {
         _date = date;
         _length = length;
